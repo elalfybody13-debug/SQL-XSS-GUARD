@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL-XSS GUARD Scanner Pro</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* 1. Reset and Base Styles */
+        
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            /* Prevent scrolling if the animation is large */
+        }
+        /* 2. Particles Background Container */
+        
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #05080f;
+            /* Deep cyber night color */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50% 50%;
+            z-index: 1;
+            /* Keep it below content */
+        }
+        /* 3. The Main Content Container (to keep it centered and readable) */
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            /* Keep content above animation */
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* 4. Professional Glassmorphism Card Style */
+        
+        .card {
+            background: rgba(22, 27, 34, 0.65);
+            /* Semi-transparent black */
+            backdrop-filter: blur(10px);
+            /* Frosted glass blur effect */
+            border: 1px solid rgba(48, 54, 61, 0.6);
+            border-radius: 16px;
+            color: #c9d1d9;
+            width: 100%;
+            max-width: 800px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+            transform: translateY(-5px);
+        }
+        /* 5. Cybernetic Text Styles */
+        
+        .cyber-title {
+            color: #58a6ff;
+            /* Cyber blue */
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
+        }
+        /* 6. Form Styles */
+        
+        .form-label {
+            color: #8b949e;
+            font-weight: 600;
+        }
+        
+        .form-control-cyber {
+            background-color: rgba(1, 4, 9, 0.8);
+            color: #e6edf3 !important;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 12px 15px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        .form-control-cyber:focus {
+            background-color: #010409;
+            border-color: #238636;
+            box-shadow: 0 0 0 3px rgba(35, 134, 54, 0.2);
+            color: #fff !important;
+        }
+        /* 7. Animated Scanner Effect for Input Box */
+        
+        .input-group-cyber {
+            position: relative;
+        }
+        
+        .input-group-cyber::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #2ea043, transparent);
+            animation: scan_line 2.5s infinite linear;
+            pointer-events: none;
+            /* Make sure click goes through */
+            z-index: 5;
+        }
+        
+        @keyframes scan_line {
+            0% {
+                top: 0;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+        /* 8. Success/Danger Status Styles */
+        
+        .btn-check-data {
+            background-color: #238636;
+            border: none;
+            color: #fff;
+            padding: 12px;
+            font-weight: 700;
+            border-radius: 8px;
+            width: 100%;
+            margin-bottom: 10px;
+            /* المسافة بين الزرارين */
+        }
+        
+        .btn-check-data:hover {
+            background-color: #2ea043;
+        }
+        /* ستايل زرار اللوجات عشان يمشي مع تصميمك */
+        
+        .btn-view-logs {
+            background-color: transparent;
+            border: 1px solid #58a6ff;
+            color: #58a6ff;
+            padding: 10px;
+            font-weight: 600;
+            border-radius: 8px;
+            width: 100%;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: 0.3s;
+        }
+        
+        .btn-view-logs:hover {
+            background-color: rgba(88, 166, 255, 0.1);
+            color: #fff;
+        }
+        
+        .log-box {
+            background: rgba(1, 4, 9, 0.9);
+            border: 1px solid #30363d;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #e6edf3;
+        }
+        
+        .threat-alert {
+            border-color: #da3633;
+            background-color: rgba(218, 54, 51, 0.05);
+        }
+        
+        .safe-alert {
+            border-color: #238636;
+            background-color: rgba(35, 134, 54, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ANIMATED BACKGROUND CONTAINER -->
+    <div id="particles-js"></div>
+
+    <!-- MAIN CONTENT CONTENT-WRAPPER -->
+    <div class="content-wrapper container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-7 card shadow-lg">
+                <h1 class="text-center mb-4 cyber-title">
+                    <span style="font-size: 1.5rem;">🛡️</span> SQL-XSS GUARD
+                </h1>
+                <h4 class="text-center mb-5 text-muted">Advanced SQLi-XSS Penetration Testing Tool</h4>
+
+                <form method="POST">
+                    <div class="mb-4 input-group-cyber">
+                        <label class="form-label">Input String / Payload to Verify</label>
+                        <input type="text" name="payload" class="form-control form-control-cyber" placeholder="e.g., ' OR 1=1 --" required>
+                    </div>
+                    <button type="submit" class="btn btn-check-data">Run Threat Analysis</button>
+                    <!-- الزرار ده اللي هيوديك لصفحة الـ Logs -->
+                    <a href="/logs" class="btn-view-logs">📊 View Incident Logs</a>
+                </form>
+
+                {% if result %}
+                <div class="mt-5">
+                    {% if result.status == 'danger' %}
+                    <div class="alert alert-danger border threat-alert">
+                        <h5 class="alert-heading fw-bold">🚨 Security Violation Detected!</h5>
+                        <p class="mb-3 text-white">Your input contains recognized malicious SQL patterns.</p>
+                        <div class="log-box mt-3">
+                            {% for threat in result.data %}
+                            <div class="text-white">[DETECTED] {{ threat.attack_type }} (Risk: {{ threat.risk_level }})</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-success border safe-alert">
+                        <h5 class="alert-heading fw-bold">✅ Clean Input</h5>
+                        <p class="mb-0 text-white">No malicious SQL patterns were identified in your request after analysis.</p>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Particles Background (REQUIRED) -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        /* Particles.js Config for a 'Cyber Security' feel */
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#2ea043"
+                },
+                /* Light cyber green particles */
+                "shape": {
+                    "type": "circle"
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#58a6ff",
+                    "opacity": 0.3,
+                    "width": 1
+                },
+                /* Blue lines linking them */
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "bubble"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "bubble": {
+                        "distance": 250,
+                        "size": 0,
+                        "duration": 2,
+                        "opacity": 0,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+
+</body>
+
+</html>

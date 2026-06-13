@@ -1,0 +1,30 @@
+[2026-05-03 02:29:26] [IP: 127.0.0.1] [ALARM] Threats: ['Boolean-Based Blind / Tautology'] | Payload: ' OR 1=1
+[2026-05-03 02:55:54] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Boolean-Based Blind / Tautology'] | Payload: ' OR 1=1
+[2026-05-03 02:59:06] [IP: 192.168.1.8] [ALARM] Threats: ['XSS: Basic Script Tag', 'XSS: Alert/Prompt Injection'] | Payload: <script>alert('Hacked')</script>
+[2026-05-03 03:05:27] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Boolean-Based Blind / Tautology', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: admin' OR 1=1 --
+[2026-05-03 03:06:07] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Boolean-Based Blind / Tautology'] | Payload: " OR "a"="a"
+[2026-05-03 03:07:03] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Union-Based (In-Band)', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: ' UNION SELECT username, password FROM users --
+[2026-05-03 03:07:59] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Stacked Queries', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: test_user'; DROP TABLE students; --
+[2026-05-03 03:08:58] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Error-Based Probing (Comment Injection)'] | Payload: admin' /*
+[2026-05-03 03:11:30] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Time-Based Blind', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: admin' AND SLEEP(10) --
+[2026-05-03 03:12:08] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Time-Based Blind', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: admin' AND SLEEP(10) --
+[2026-05-03 03:12:43] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Stacked Queries', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: test_user'; DROP TABLE students; --
+[2026-05-03 03:13:02] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Time-Based Blind', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: 1'; WAITFOR DELAY '0:0:10' --
+[2026-05-03 03:13:32] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Union-Based (In-Band)', 'SQLi: Out-of-Band (OOB) / System Commands', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: 1' UNION SELECT LOAD_FILE('/etc/passwd') --
+[2026-05-03 03:16:07] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Stored Procedure Injection', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: 1'; EXEC sp_addrolemember 'db_owner', 'hacker' --
+[2026-05-03 03:20:09] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Union-Based (In-Band)', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: admin' UnIoN aLl SeLeCt 1,2,3 --
+[2026-05-03 03:27:17] [IP: 192.168.1.8] [ALARM] Threats: ['XSS: Event Handler (onerror/onload)', 'XSS: HTML Overlay/Iframe', 'XSS: Alert/Prompt Injection'] | Payload: <img src=x onerror=alert(1)>
+[2026-05-03 03:29:56] [IP: 192.168.1.8] [ALARM] Threats: ['XSS: JavaScript Protocol', 'XSS: Alert/Prompt Injection'] | Payload: <a href="javascript:alert('XSS')">Click Me</a>
+[2026-05-03 03:36:58] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Boolean-Based Blind / Tautology', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: admin' OR 1=1 --
+[2026-05-03 03:42:34] [IP: 192.168.1.8] [ALARM] Threats: ['XSS: Basic Script Tag', 'XSS: Alert/Prompt Injection'] | Payload: <script>alert('Hacked')</script>
+[2026-05-03 05:08:45] [IP: 192.168.204.128] [ALARM] Threats: ['SQLi: Boolean-Based Blind / Tautology'] | Payload: ' or 1=1
+[2026-05-03 07:23:09] [IP: 192.168.1.8] [ALARM] Threats: ['XSS: Basic Script Tag', 'XSS: Alert/Prompt Injection'] | Payload: <script>alert('Hacked')</script>
+[2026-05-03 07:23:25] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Time-Based Blind', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: admin' AND SLEEP(10) --
+[2026-05-03 07:23:32] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Boolean-Based Blind / Tautology', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: admin' OR 1=1 --
+[2026-05-04 20:30:07] [IP: 192.168.1.8] [ALARM] Threats: ['XSS: Basic Script Tag', 'XSS: Alert/Prompt Injection'] | Payload: <script>alert('Hacked')</script>
+[2026-05-04 21:57:06] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Boolean-Based Blind / Tautology', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: admin' OR 1=1 --
+[2026-05-04 22:00:03] [IP: 192.168.1.8] [ALARM] Threats: ['XSS: Basic Script Tag', 'XSS: Alert/Prompt Injection'] | Payload: <script>alert('Hacked')</script>
+[2026-05-05 12:17:01] [IP: 192.168.1.8] [ALARM] Threats: ['SQLi: Time-Based Blind', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: admin' AND SLEEP(10) --
+[2026-05-05 15:15:16] [IP: 127.0.0.1] [ALARM] Threats: ['SQLi: Time-Based Blind'] | Payload:  admin' AND SLEEP(10) 
+[2026-05-05 15:26:24] [IP: 127.0.0.1] [ALARM] Threats: ['SQLi: Boolean-Based Blind / Tautology', 'SQLi: Error-Based Probing (Comment Injection)'] | Payload: admin' OR 1=1 --
+[2026-05-05 15:27:06] [IP: 127.0.0.1] [ALARM] Threats: ['XSS: Basic Script Tag', 'XSS: Alert/Prompt Injection'] | Payload: <script>alert('Hacked')</script>
